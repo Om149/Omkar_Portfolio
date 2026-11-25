@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('About')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: nav}"></header>
+
+<main>
+    <section class="page-banner">
+        <div class="container">
+            <h1>About me</h1>
+            <p>Data analyst and Java developer based in Navi Mumbai.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container two-col">
+            <div>
+                <h2 class="section-title">Who I am</h2>
+                <p class="section-text" th:text="${profile.summary}"></p>
+                <p class="section-text">My internship work covers the full analytics workflow: cleaning data with Python, querying it with SQL, and presenting the results in Power BI. Alongside that, I build Java applications using OOP principles, JDBC and Spring.</p>
+                <div class="hero-actions">
+                    <a th:href="@{/contact}" class="btn">Contact me</a>
+                    <a th:href="${profile.github}" class="btn btn-outline" target="_blank" rel="noopener">GitHub</a>
+                    <a th:href="${profile.linkedin}" class="btn btn-outline" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+            </div>
+            <aside class="card">
+                <h3>Quick facts</h3>
+                <ul class="facts">
+                    <li><strong>Location</strong> <span th:text="${profile.location}"></span></li>
+                    <li><strong>Email</strong> <a th:href="'mailto:' + ${profile.email}" th:text="${profile.email}"></a></li>
+                    <li><strong>Phone</strong> <span th:text="${profile.phone}"></span></li>
+                    <li><strong>Degree</strong> <span>B.E. Information Technology</span></li>
+                </ul>
+                <h3>Languages</h3>
+                <ul class="facts">
+                    <li th:each="l : ${profile.languages}"><strong th:text="${l.name()}"></strong> <span th:text="${l.level()}"></span></li>
+                </ul>
+            </aside>
+        </div>
+    </section>
+
+    <section class="section alt">
+        <div class="container">
+            <h2 class="section-title">Keep exploring</h2>
+            <div class="hero-actions">
+                <a th:href="@{/skills}" class="btn btn-outline">Skills</a>
+                <a th:href="@{/experience}" class="btn btn-outline">Experience</a>
+                <a th:href="@{/projects}" class="btn btn-outline">Projects</a>
+                <a th:href="@{/education}" class="btn btn-outline">Education</a>
+                <a th:href="@{/}" class="btn btn-outline">← Home</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html>

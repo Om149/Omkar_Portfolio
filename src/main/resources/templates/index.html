@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Home')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: nav}"></header>
+
+<main>
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <p class="eyebrow">Hello, I'm</p>
+                <h1 th:text="${profile.name}">Omkar Kadam</h1>
+                <h2 class="typed-line">I'm a <span id="typed" data-words="Data Analyst,Java Developer,Power BI Developer,Problem Solver"></span><span class="cursor">|</span></h2>
+                <p class="lead">I turn raw data into clear insights and build dependable Java applications. Recent B.E. IT graduate, currently interning in data analytics.</p>
+                <div class="hero-actions">
+                    <a th:href="@{/projects}" class="btn">View my work</a>
+                    <a th:href="@{/contact}" class="btn btn-outline">Get in touch</a>
+                </div>
+                <p class="meta">📍 <span th:text="${profile.location}">Navi Mumbai</span></p>
+            </div>
+            <div class="hero-card">
+                <div class="avatar">OK</div>
+                <ul class="stat-list">
+                    <li><strong>8.27</strong><span>CGPA (B.E. IT)</span></li>
+                    <li><strong>8,500+</strong><span>Records analyzed</span></li>
+                    <li><strong>3</strong><span>Projects built</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">About me</h2>
+            <p class="section-text" th:text="${profile.summary}"></p>
+            <a th:href="@{/about}" class="link-arrow">Read more →</a>
+        </div>
+    </section>
+
+    <section class="section alt">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="grid">
+                <article class="card" th:each="skill : ${skills}">
+                    <div class="card-icon" th:text="${skill.icon}">📊</div>
+                    <h3 th:text="${skill.category}">Category</h3>
+                    <div class="chips">
+                        <span class="chip" th:each="item : ${skill.itemList}" th:text="${item}">Item</span>
+                    </div>
+                </article>
+            </div>
+            <a th:href="@{/skills}" class="link-arrow">All skills →</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Featured projects</h2>
+            <div class="grid">
+                <article class="card" th:each="p : ${projects}">
+                    <span class="tag" th:text="${p.category}">Category</span>
+                    <h3 th:text="${p.title}">Title</h3>
+                    <p th:text="${p.summary}">Summary</p>
+                    <div class="chips">
+                        <span class="chip" th:each="t : ${p.techList}" th:text="${t}">Tech</span>
+                    </div>
+                </article>
+            </div>
+            <a th:href="@{/projects}" class="link-arrow">See project details →</a>
+        </div>
+    </section>
+
+    <section class="section alt">
+        <div class="container">
+            <h2 class="section-title">Explore</h2>
+            <div class="grid grid-4">
+                <a class="card card-link" th:href="@{/experience}"><h3>💼 Experience</h3><p>My data analyst internship.</p></a>
+                <a class="card card-link" th:href="@{/education}"><h3>🎓 Education</h3><p>Degree, diploma and certifications.</p></a>
+                <a class="card card-link" th:href="@{/projects}"><h3>🚀 Projects</h3><p>Analytics, web and computer vision.</p></a>
+                <a class="card card-link" th:href="@{/contact}"><h3>✉️ Contact</h3><p>Let's work together.</p></a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html>

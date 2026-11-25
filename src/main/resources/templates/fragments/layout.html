@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title} + ' | Omkar Kadam'">Omkar Kadam</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/js/main.js}" defer></script>
+</head>
+<body>
+
+<header th:fragment="nav" class="site-header">
+    <nav class="nav container">
+        <a th:href="@{/}" class="brand">OK<span>.</span></a>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+        <ul class="nav-links">
+            <li><a th:href="@{/}" th:classappend="${active == 'home'} ? 'active' : ''">Home</a></li>
+            <li><a th:href="@{/about}" th:classappend="${active == 'about'} ? 'active' : ''">About</a></li>
+            <li><a th:href="@{/skills}" th:classappend="${active == 'skills'} ? 'active' : ''">Skills</a></li>
+            <li><a th:href="@{/experience}" th:classappend="${active == 'experience'} ? 'active' : ''">Experience</a></li>
+            <li><a th:href="@{/projects}" th:classappend="${active == 'projects'} ? 'active' : ''">Projects</a></li>
+            <li><a th:href="@{/education}" th:classappend="${active == 'education'} ? 'active' : ''">Education</a></li>
+            <li><a th:href="@{/contact}" class="btn btn-small" th:classappend="${active == 'contact'} ? 'active' : ''">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<footer th:fragment="footer" class="site-footer">
+    <div class="container footer-inner">
+        <p>© <span id="year">2026</span> Omkar Kadam. Built with Java, Spring Boot &amp; Thymeleaf.</p>
+        <p class="footer-links">
+            <a th:href="${profile.github}" target="_blank" rel="noopener">GitHub</a>
+            <a th:href="${profile.linkedin}" target="_blank" rel="noopener">LinkedIn</a>
+            <a th:href="'mailto:' + ${profile.email}">Email</a>
+        </p>
+    </div>
+</footer>
+</body>
+</html>

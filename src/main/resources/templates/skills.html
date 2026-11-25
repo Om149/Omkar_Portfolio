@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Skills')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: nav}"></header>
+
+<main>
+    <section class="page-banner">
+        <div class="container">
+            <h1>Technical skills</h1>
+            <p>Tools and technologies I work with.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="grid">
+                <article class="card" th:each="skill : ${skills}">
+                    <div class="card-icon" th:text="${skill.icon}">📊</div>
+                    <h3 th:text="${skill.category}">Category</h3>
+                    <div class="chips">
+                        <span class="chip" th:each="item : ${skill.itemList}" th:text="${item}">Item</span>
+                    </div>
+                </article>
+            </div>
+            <p class="back"><a th:href="@{/}" class="link-arrow">← Back to home</a></p>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html>

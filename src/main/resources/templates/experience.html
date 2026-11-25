@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Experience')}"></head>
+<body>
+<header th:replace="~{fragments/layout :: nav}"></header>
+
+<main>
+    <section class="page-banner">
+        <div class="container">
+            <h1>Experience</h1>
+            <p>Hands-on work with real datasets.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="timeline">
+                <article class="timeline-item" th:each="e : ${profile.experiences}">
+                    <span class="timeline-date" th:text="${e.period()}">Oct 2026 – Present</span>
+                    <h3 th:text="${e.role()}">Role</h3>
+                    <p class="company" th:text="${e.company()}">Company</p>
+                    <ul class="bullets">
+                        <li th:each="pt : ${e.points()}" th:text="${pt}">Point</li>
+                    </ul>
+                </article>
+            </div>
+            <p class="back"><a th:href="@{/projects}" class="link-arrow">See my projects →</a></p>
+            <p class="back"><a th:href="@{/}" class="link-arrow">← Back to home</a></p>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+</body>
+</html>

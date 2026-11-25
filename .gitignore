@@ -1,0 +1,6 @@
+target/
+data/
+.mvn/apache-maven-*/
+.mvn/wrapper/*.zip
+.idea/
+.vscode/
